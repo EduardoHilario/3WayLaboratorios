@@ -19,5 +19,9 @@ public class CalculadoraSalario {
 
 
     }
+
+    public double calculeSalario(Pessoa funcionario){
+        return funcionario.getSalario() + calculaReajuste(funcionario);
+    }
 }
 

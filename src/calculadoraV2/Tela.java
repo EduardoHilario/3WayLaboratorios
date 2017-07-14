@@ -11,7 +11,7 @@ public class Tela {
     public static void main(String[] args) {
 
 
-
+        //Define parametros para os Cargos
         Cargo.DESENVOLVEDOR.setSalario(new double[]{2200,3000,4600});
         Cargo.DESENVOLVEDOR.setFaixaReajuste(new double[]{8,6.5,5,3});
 
@@ -25,8 +25,10 @@ public class Tela {
         Cargo.GERENTE.setFaixaReajuste(new double[]{9,7.5,6});
 
 
+        //Define nome do funcionário
         String nome = JOptionPane.showInputDialog("Informe o nome do funcionário");
 
+        //Lista os cargos disponiveis
         String temp = "";
         for (int i = 0; i < Cargo.values().length; i++){
             temp += (i+1)+" - "+ Cargo.values()[i] + "\n";
@@ -34,6 +36,7 @@ public class Tela {
 
         Cargo cargo;
 
+        //Solicita o cargo e valida a entrada
         while(true) {
             try {
 
@@ -46,14 +49,20 @@ public class Tela {
             }
         }
 
+        //Solicita o salario atual
         double salarioAtual = Double.parseDouble(JOptionPane.showInputDialog("Informe o salário: "));
 
+        //Cria o funcionario
         Pessoa funcionario = new Pessoa(nome,cargo,salarioAtual);
 
+        //Calcula e mostra o novo salario
         CalculadoraSalario calculadoraSalario = new CalculadoraSalario();
-        JOptionPane.showMessageDialog(null,"Nome: " +funcionario.getNome()+
-                ".\nSalário Atual: R$ "+funcionario.getSalario()+" reais.\nNovo Salário: R$ "
-                +calculadoraSalario.calculaReajuste(funcionario),"Novo Salário",1);
+        JOptionPane.showMessageDialog(null,
+                "Nome: " +funcionario.getNome()+
+                ".\nSalário Atual: R$ "+funcionario.getSalario()+" reais." +
+                "\nReajuste: R$ "+calculadoraSalario.calculaReajuste(funcionario) +
+                "\nNovo Salário: R$ " +calculadoraSalario.calculeSalario(funcionario),
+                "Novo Salário",1);
 
 
     }
